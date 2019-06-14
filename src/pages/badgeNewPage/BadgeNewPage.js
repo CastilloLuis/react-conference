@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import background from '../../assets/images/badge-header.svg';
 import './BadgeNewPage.css';
 
-import Navbar from '../../components/navbar/navbar.js'
 import Badge from '../../components/badge/badge';
 import BadgeForm from '../../components/badge-form/badgeForm';
 
@@ -31,8 +30,7 @@ export default class BadgePageNew extends Component {
         const { firstName, lastName, email, jobTitle, twitter} = this.state.form;
 
         return (
-            <div>
-                <Navbar />
+            <React.Fragment>
                 <div className="BadgeNew__hero">
                     <img src={background} alt="stars background"/>
                 </div>
@@ -55,7 +53,7 @@ export default class BadgePageNew extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
+            </React.Fragment>
         )
     }
 
