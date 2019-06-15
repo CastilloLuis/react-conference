@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import background from '../../assets/images/platziconf-logo.svg';
-import './BadgeNewPage.css';
+import './BadgeEdit.css';
 
 import API from '../../utils/api';
 
 import Badge from '../../components/badge/badge';
 import BadgeForm from '../../components/badge-form/badgeForm';
 
-export default class BadgePageNew extends Component {
+export default class BadgeEdit extends Component {
 
     state = {
         form: {
@@ -17,6 +17,20 @@ export default class BadgePageNew extends Component {
             jobTitle: '',
             twitter: ''
         },
+    }
+
+    componentDidMount() {
+        this.fetchData(this.props.match.params.badgeId);
+    }
+
+    fetchData = async id => {
+        try {
+            const data = await API.badges.read(id);
+            console.log(data)
+            this.setState({form: data});
+        } catch (e) {
+            console.log(e);
+        }
     }
 
     handleChange = e => {
@@ -31,7 +45,7 @@ export default class BadgePageNew extends Component {
     handleSubmit = async e => {
         e.preventDefault();
         try {
-            await API.badges.create(this.state.form);
+            await API.badges.update(this.props.match.params.badgeId, this.state.form);
             this.props.history.push('/badges');
         } catch (e) {
             console.log('error', e)
@@ -43,7 +57,7 @@ export default class BadgePageNew extends Component {
 
         return (
             <React.Fragment>
-                <div className="BadgeNew__hero">
+                <div className="BadgeEdit__hero">
                     <img src={background} className="Hero__image" alt="stars background"/>
                 </div>
                 <div className="container">
@@ -58,7 +72,7 @@ export default class BadgePageNew extends Component {
                             />
                         </div>
                         <div className="col-6">
-                            <h1>New Attendant</h1>                        
+                            <h1>Edit Attendant</h1>
                             <BadgeForm
                                 onChange={this.handleChange}
                                 formValues={this.state.form}
