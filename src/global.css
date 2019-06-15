@@ -75,6 +75,10 @@ a.link-unstyled:hover {
   box-shadow: 0 0 0 0.2rem rgba(255, 64, 64, 0.5);
 }
 
+.btn-sm {
+  width: 30%;
+}
+
 .size-46 {
   font-size: 46px
 }
