@@ -27,10 +27,9 @@ export default class BadgesPage extends Component {
         });
         try {
             const data = await API.badges.list();
-            console.log(data);
             this.setState({
                 loading: false,
-                data: []
+                data
             });
             console.log(this.state)
         } catch (e) {

@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
 
 export default class BadgeForm extends Component {
-
-    handleSubmit = e => {
-        e.preventDefault()
-    }
-
     render() {
         return (
             <div>
                 <h1>New Attendant</h1>
 
-                <form onSubmit={this.handleSubmit}>
+                <form type="POST" onSubmit={this.props.onSubmit}>
                     <div className="form-group">
                         <label>First Name</label>
                         <input 

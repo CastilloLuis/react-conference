@@ -2,7 +2,7 @@ import React from 'react';
 
 const EmptyList = () => {
     return (
-        <div>
+        <div className="flex">
             <h3>We did not found any badge <span role="img" aria-label="sad emoji face">😔</span></h3>
         </div>
     )

@@ -3,6 +3,8 @@ import './badge.css';
 
 import confLogo from '../../assets/images/badge-header.svg';
 
+import Gravatar from '../gravatar/Gravatar';
+
 const Badge = props => {
     return (
         <div className="Badge">
@@ -11,7 +13,10 @@ const Badge = props => {
             </div>
 
             <div className="Badge__section-name">
-                <img className="Badge__avatar" src='https://www.gravatar.com/avatar?d=identicon' alt='avatar' />
+                <Gravatar 
+                    email={props.email}
+                    alt="Avatar"
+                />
                 <h1>{props.firstName} <br/> {props.lastName}</h1>
             </div>
 

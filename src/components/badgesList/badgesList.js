@@ -3,7 +3,9 @@ import './badgesList.css';
 import './badgesListSkeletons.css';
 
 import tw_logo from "../../assets/images/twitter-logo.png";
+
 import EmptyList from '../empty/emptyList';
+import Gravatar from '../gravatar/Gravatar';
 
 const BadgesList = (props) => {
     if(!props.loading) {
@@ -13,7 +15,10 @@ const BadgesList = (props) => {
                     {props.badges.map((badge) => {
                         return (
                             <li key={badge.id} className='Badge__section-name-list'>
-                                <img src={badge.avatarUrl} className='Badge__avatar-list' alt="badge avatar" />
+                                <Gravatar 
+                                    email={badge.email}
+                                    alt="avatar conference"
+                                />
                                 <div>
                                     <div>{badge.firstName} {badge.lastName}</div>
                                     <div>{badge.title}</div>
@@ -24,7 +29,7 @@ const BadgesList = (props) => {
                                 </div>
                             </li>
                         )
-                    })}
+                    }).reverse()}
                 </ul>
             )            
         } else {
