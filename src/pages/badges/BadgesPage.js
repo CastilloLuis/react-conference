@@ -7,7 +7,7 @@ import './BadgesPage.css';
 import confLogo from '../../assets/images/badge-header.svg';
 
 import BadgesList from '../../components/badgesList/badgesList';
- 
+
 export default class BadgesPage extends Component {
 
     state = {
