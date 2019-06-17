@@ -22,7 +22,7 @@ const useSearchBadge = (props) => {
 }
 
 const BadgeSearchFilter = (props) => {
-    const { query, setQuery, filteredBadges } = useSearchBadge(props.badge);
+    const { query, setQuery, filteredBadges } = useSearchBadge(props);
 
     return (
         <div className="form-group">
