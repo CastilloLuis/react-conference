@@ -3,13 +3,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Badge from '../../../components/badge/badge';
-import Modal from '../../../components/modal/Modal';
+import DeleteBadgeModal from '../../../components/deleteBadgeModal/DeleteBadgeModal';
 
 import './BadgeDetails.css';
 
 import confLogo from '../../../assets/images/platziconf-logo.svg'
 
-const BadgeDetails = ({ badge, onCloseModal, onOpenModal, modalIsOpen }) => {
+const BadgeDetails = (props) => {
     return (
         <div>
             <div className="BadgeDetails__hero">
@@ -20,7 +20,7 @@ const BadgeDetails = ({ badge, onCloseModal, onOpenModal, modalIsOpen }) => {
                         </div>
                         <div className="col-6">
                             <h1 className="BadgeDetails__hero-attendant-name">
-                                {badge.firstName} {badge.lastName}
+                                {props.firstName} {props.lastName}
                             </h1>
                         </div>
                     </div>
@@ -31,33 +31,32 @@ const BadgeDetails = ({ badge, onCloseModal, onOpenModal, modalIsOpen }) => {
                 <div className="row">
                     <div className="col">
                         <Badge 
-                            firstName={badge.firstName || 'FIRST_NAME'}
-                            lastName={badge.lastName || 'LAST_NAME'}
-                            email={badge.email || 'EMAIL'}
-                            jobTitle={badge.jobTitle || 'JOB_TITLE'}
-                            twitter={badge.twitter || 'TWITTER_USERNAME'}
+                            firstName={props.badge.firstName || 'FIRST_NAME'}
+                            lastName={props.badge.lastName || 'LAST_NAME'}
+                            email={props.badge.email || 'EMAIL'}
+                            jobTitle={props.badge.jobTitle || 'JOB_TITLE'}
+                            twitter={props.badge.twitter || 'TWITTER_USERNAME'}
                         />
                     </div>
                     <div className="col">
                         <h2>Actions</h2>
                         <div>
                             <div>
-                                <Link to={`/badges/${badge.id}/edit`} className="btn btn-primary mb-4">
+                                <Link to={`/badges/${props.badge.id}/edit`} className="btn btn-primary mb-4">
                                     Edit
                                 </Link>
                             </div>
                             <div>
                                 <button 
-                                    onClick={onOpenModal} 
+                                    onClick={props.onOpenModal} 
                                     className="btn btn-danger">
                                     Delete
                                 </button>
-                                <Modal 
-                                    isOpen={modalIsOpen} 
-                                    onClose={onCloseModal}
-                                >
-                                    ESTE ES MI PRIMER MODAL
-                                </Modal>
+                                <DeleteBadgeModal 
+                                    isOpen={props.modalIsOpen} 
+                                    onClose={props.onCloseModal}
+                                    onDeleteBadge={props.onDeleteBadge}
+                                />
                             </div>
                         </div>
                     </div>

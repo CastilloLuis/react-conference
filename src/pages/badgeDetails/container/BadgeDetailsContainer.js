@@ -26,13 +26,20 @@ export default class BadgeDetailsContainer extends Component {
 
     handleOpenModal = () => this.setState({modalIsOpen: true});
 
+    handleDeleteBadge = async() => {
+        await API.badges.remove(this.props.match.params.badgeId);
+        this.props.history.push('/badges');
+    }
+
     render() {
         return (
             <BadgeDetails 
                 onCloseModal={this.handleCloseModal} 
                 onOpenModal={this.handleOpenModal}
+                onDeleteBadge={this.handleDeleteBadge}
                 modalIsOpen={this.state.modalIsOpen}
-                badge={this.state.data} />
+                badge={this.state.data} 
+            />
         )
     }
 }
