@@ -1,13 +1,15 @@
 import React from 'react';
+
 import { Link } from 'react-router-dom';
 
 import Badge from '../../../components/badge/badge';
+import Modal from '../../../components/modal/Modal';
 
 import './BadgeDetails.css';
 
 import confLogo from '../../../assets/images/platziconf-logo.svg'
 
-const BadgeDetails = ({ badge }) => {
+const BadgeDetails = ({ badge, onCloseModal, onOpenModal, modalIsOpen }) => {
     return (
         <div>
             <div className="BadgeDetails__hero">
@@ -45,7 +47,17 @@ const BadgeDetails = ({ badge }) => {
                                 </Link>
                             </div>
                             <div>
-                                <button className="btn btn-danger">Delete</button>
+                                <button 
+                                    onClick={onOpenModal} 
+                                    className="btn btn-danger">
+                                    Delete
+                                </button>
+                                <Modal 
+                                    isOpen={modalIsOpen} 
+                                    onClose={onCloseModal}
+                                >
+                                    ESTE ES MI PRIMER MODAL
+                                </Modal>
                             </div>
                         </div>
                     </div>

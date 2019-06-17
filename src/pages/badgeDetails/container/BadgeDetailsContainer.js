@@ -8,7 +8,8 @@ export default class BadgeDetailsContainer extends Component {
 
     state = {
         loading: true,
-        data: {}
+        data: {},
+        modalIsOpen: false,
     }
 
     componentDidMount() {
@@ -21,9 +22,17 @@ export default class BadgeDetailsContainer extends Component {
         console.log(this.state.data)
     }
 
+    handleCloseModal = () => this.setState({modalIsOpen: false});
+
+    handleOpenModal = () => this.setState({modalIsOpen: true});
+
     render() {
         return (
-            <BadgeDetails badge={this.state.data} />
+            <BadgeDetails 
+                onCloseModal={this.handleCloseModal} 
+                onOpenModal={this.handleOpenModal}
+                modalIsOpen={this.state.modalIsOpen}
+                badge={this.state.data} />
         )
     }
 }
