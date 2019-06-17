@@ -1,9 +1,29 @@
 import React from 'react';
 
-const BadgeSearchFilter = (props) => {
+/**
+ * Custom hook
+ * @param {*} props 
+*/
+const useSearchBadge = (props) => {
     const [ query, setQuery ] = React.useState('');
-    const filteredBadges = props.badges.filter(badge => badge.firstName.toLowerCase().includes(query.toLowerCase()));
-    console.log('filtered badges', filteredBadges)
+    const [ filteredBadges, setFilteredResults ] = React.useState(props.badges); // to use React.useMemo
+
+    /* optimazing search filter*/
+    React.useMemo(() => {
+        const result = props.badges.filter(badge => {
+            return `${badge.firstName} ${badge.lastName}`
+                .toLowerCase()
+                    .includes(query.toLowerCase())
+        });
+        setFilteredResults(result);
+    }, [ props.badges, query ]);
+
+    return { query, setQuery, filteredBadges };
+}
+
+const BadgeSearchFilter = (props) => {
+    const { query, setQuery, filteredBadges } = useSearchBadge(props.badge);
+
     return (
         <div className="form-group">
             <label>Filter Badges</label>
