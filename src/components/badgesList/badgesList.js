@@ -27,7 +27,7 @@ const BadgesList = (props) => {
                                             <Link 
                                                 key={badge.id}
                                                 className="text-reset text-decoration-none"
-                                                to={`/badges/${badge.id}`}
+                                                to={`${process.env.PUBLIC_URL}/badges/${badge.id}`}
                                             >
                                                 <BadgesListItem 
                                                     badge={badge}

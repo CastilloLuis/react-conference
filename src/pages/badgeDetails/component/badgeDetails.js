@@ -42,7 +42,7 @@ const BadgeDetails = (props) => {
                         <h2>Actions</h2>
                         <div>
                             <div>
-                                <Link to={`/badges/${props.badge.id}/edit`} className="btn btn-primary mb-4">
+                                <Link to={`${process.env.PUBLIC_URL}/badges/${props.badge.id}/edit`} className="btn btn-primary mb-4">
                                     Edit
                                 </Link>
                             </div>
