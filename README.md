@@ -1,4 +1,4 @@
-# Rooms App
+# React Conference
 
 This project was built mainly to implement best practices for building declarative, dynamic and scalable UI in ReactJS, using last standars of the library, like react hooks. In this project you can generate a badge for a "react conference" to identify yourself.
 
